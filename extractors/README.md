@@ -9,7 +9,7 @@ msm8960: N/A<sup>[2](#floEGL)</sup>
 msm8974: LA.BF.1.1.3_rb1.5  
 msm8992: assumed<sup>[1](#googleEGL)</sup> LA.BF64.1.2.3_rb1.2  
 msm8994: assumed<sup>[1](#googleEGL)</sup> LA.BF64.1.2.3_rb1.2  
-msm8996: LA.UM.5.5_rb1.10
+msm8996: LA.UM.5.5.r1-02200-8x96.0
 ### Origins:
 msm8916: 6.0.1 blobs from kipper/crackling  
 msm8952: 7.0 blobs from hydrogen 7.1.12 nrd90m  
@@ -17,7 +17,7 @@ msm8960: 6.0.1 blobs from flo mob30x
 msm8974: 6.0.1 blobs from bacon  
 msm8992: 7.0 blobs from bullhead nrd90s  
 msm8994: 7.0 blobs from angler nrd90u  
-msm8996: 7.0 blobs from gemini 6.10.13 nrd90m  
+msm8996: 7.1 blobs from nx531j nubia UI v3.61 nmf26f
 ### Min kernel patch level required:
 msm8916: Any 5.0+ kernel  
 msm8952: Any 6.0+ kernel  
@@ -26,14 +26,6 @@ msm8974: Any 5.1+ kernel
 msm8992: Any 6.0+ kernel  
 msm8994: Any 6.0+ kernel  
 msm8996: Patched mdss/kgsl up to LA.UM.5.5.r1-00100-8x96.0  
-
-## Bluetooth:
-### Origins:
-aptX: blob from griffin npl25.86-15  
-aptXHD: blob from h918 nrd90m (renamed)  
-### Min Bluetooth/CAF patch level required:
-aptX: bt.lnx.2.1-00007  
-aptXHD: bt.lnx.2.1-00014  
 
 ### Notes:
 <a name="googleEGL">1</a>: Google likes to strip QUIC branches from their shipped binaries so we can't really know which branch they originate from  

@@ -1,6 +1,7 @@
 #!/bin/bash
 #
 # Copyright (C) 2016 The CyanogenMod Project
+# Copyright (C) 2017 The LineageOS Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -23,6 +24,8 @@ export INITIAL_COPYRIGHT_YEAR=2016
 DEVICE=binaries
 DEVICE_COMMON="common/extractors"
 VENDOR=qcom
+
+INITIAL_COPYRIGHT_YEAR=2016
 
 # Load extractutils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"
@@ -251,39 +254,6 @@ printf '\n%s\n' "ifeq (\$(QCPATH),)" >> "$PRODUCTMK"
 
 write_makefiles "$MY_DIR"/"$SUBSYSTEM-$PLATFORM".txt
 
-echo "endif" >> "$PRODUCTMK"
-
-# We are done!
-write_footers
-
-# Add a guard on the top level
-cat << EOF > "$CM_ROOT/vendor/$VENDOR/$DEVICE/Android.mk"
-LOCAL_PATH := \$(call my-dir)
-
-include \$(CLEAR_VARS)
-
-ifeq (\$(BOARD_USES_QCOM_HARDWARE),true)
-include \$(call all-makefiles-under,\$(LOCAL_PATH)/\$(TARGET_BOARD_PLATFORM))
-endif
-EOF
-
-SUBSYSTEM=bluetooth
-
-# Initialize the helper
-setup_vendor "$DEVICE/$SUBSYSTEM" "$VENDOR" "$CM_ROOT" true true $SUBSYSTEM
-
-# Copyright headers and guards
-write_headers "msm8916 msm8952 msm8974 msm8992 msm8994 msm8996" TARGET_BOARD_PLATFORM
-
-# Qualcomm BSP blobs - we put a conditional around here
-# in case the BSP is actually being built
-printf '\n%s\n' "ifeq (\$(QCPATH),)" >> "$PRODUCTMK"
-
-write_makefiles "$MY_DIR"/"$SUBSYSTEM".txt
-
-echo "" >> "$PRODUCTMK"
-echo "PRODUCT_PROPERTY_OVERRIDES += \\" >> "$PRODUCTMK"
-echo "    persist.bt.enableAptXHD=true" >> "$PRODUCTMK"
 echo "endif" >> "$PRODUCTMK"
 
 # We are done!
